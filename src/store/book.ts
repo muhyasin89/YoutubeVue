@@ -4,7 +4,7 @@ import { DeleteRecord } from "../service/deleteRecord";
 import { GetListRecord } from "../service/getListRecord";
 import { PostDetailRecord } from "../service/postRecord";
 import { PutDetailRecord } from "../service/putRecord";
-import { book, formBook } from "../types/book";
+import { book, formBook, formBookIndex } from "../types/book";
 
 
 export const useBookStore = defineStore("book", () => {
@@ -51,9 +51,8 @@ export const useBookStore = defineStore("book", () => {
 
   const deleteBookId = async () => {
     let url = "book/"+ activeId.value+"/update/";
-
-    const result = await DeleteRecord(url, activeId.value);
-    updateList("delete", null);
+    await DeleteRecord(url, activeId.value);
+    updateList("delete", formBookIndex);
   }
 
   const changeActiveId = (id: number) =>{

@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-
 const book = z.object({
     id: z.number(),
     title: z.string(),
@@ -18,3 +17,10 @@ const formBook = z.object({
 })
 
 export type formBook = z.infer<typeof formBook>;
+
+let fromIndex = {
+    title: '',
+    description: '',
+    author: ''
+}
+export const formBookIndex = formBook.parse(fromIndex);
